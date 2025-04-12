@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  postgres-db:
+    image: postgres:16
+    container_name: MKK-database
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+       - "${DB_EXTERNAL_PORT}:5432"
+    volumes:
+      - data-base:/var/lib/postgresql/data
+      - ${INIT_SCRIPTS_PATH}:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 200s
+      timeout: 10s
+      retries: 5
+      start_period: 600s
+      # ХЕЛСЧЕК РАБОЧИЙ Я ПРОВЕРЯЛ КЛЯНУСЬ
+      # для всех ваших штучек буду проверять живая база данных или нет
+      # с интервалом 20 секунд будет посылать 5 запросов и если все в говне, то контейнер умер
+    restart: unless-stopped
+volumes:
+  data-base:
