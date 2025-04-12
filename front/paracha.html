@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>главная</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<style>
+    .swiper-container {
+    padding: 0 40px; /* Оставляем место для кнопок */
+  }
+  
+  .swiper-slide {
+    width: auto !important; /* Ширина задается inline-стилем */
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background-color: rgba(0,0,0,0.7);
+  }
+  
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px;
+  }
+  
+  .swiper-button-prev {
+    left: 0;
+  }
+  
+  .swiper-button-next {
+    right: 0;
+  }
+</style>
+</head>
+<body>
+    <div style="width: 100%; height: 2258px; position: relative; background: white">
+    <div class = "headd">
+        <!-- Header -->
+<div style="width: 100%; height: 100px; position: fixed; top: 0; background: white; z-index: 100; display: flex; align-items: center; padding: 0 20px;">
+    <!-- Логотип -->
+    <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-right: 50px;">
+      KrayGo
+    </div>
+    
+    <!-- Навигация -->
+    <nav style="display: flex; gap: 30px;">
+      <a href="#" style="color: black; text-decoration: none;">Главная</a>
+      <a href="#" style="color: black; text-decoration: none;">Города</a>
+      <a href="#" style="color: black; text-decoration: none;">Места</a>
+      <a href="#" style="color: black; text-decoration: none;">О нас</a>
+      <a href="#" style="color: black; text-decoration: none;">FAQ</a>
+    </nav>
+    
+    <!-- Кнопка входа и язык -->
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;">
+      <div style="background: #1D1412; color: white; padding: 5px 15px; border-radius: 10px;">
+        Войти
+      </div>
+      <div style="display: flex; align-items: center;">
+        EN
+        <div style="width: 17px; height: 8px; margin-left: 10px; border: 2px black solid;"></div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+    <div class = "text_glav">
+        <!-- Hero Section -->
+<div style="width: 100%; height: 746px; position: relative; margin-top: 100px;">
+    <img src="img/1.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+    
+    <div style="position: absolute; bottom: 100px; left: 50px; color: white; max-width: 800px;">
+      <h1 style="font-size: 60px; margin-bottom: 20px;">Вам открыта новая местность — Краснодарский Край</h1>
+    </div>
+  </div>
+    </div>
+
+
+
+    
+    <div class="navigate">
+        <div style="padding: 80px 20px; position: relative;">
+          <h2 style="font-size: 64px; text-align: center; margin-bottom: 50px;">направления</h2>
+          
+          <!-- Swiper контейнер -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <!-- Слайд 1 -->
+              <div class="swiper-slide" style="width: 335px; position: relative;">
+                <img src="img/2_ind.jpg" style="width: 100%; height: 426px; border-radius: 20px; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(180deg, rgba(166.07, 166.07, 166.07, 0) 0%, rgba(26, 28, 19, 0.70) 100%); border-radius: 20px;">
+                  <h3 style="color: white; font-size: 30px;">Назад в прошлое</h3>
+                  <p style="color: #CACACA; font-size: 16px;">Легенды, памятники и древние маршруты Краснодарского края</p>
+                </div>
+              </div>
+              
+              <!-- Слайд 2 -->
+              <div class="swiper-slide" style="width: 335px; position: relative;">
+                <img src="img/5_ind.jpg" style="width: 100%; height: 426px; border-radius: 20px; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(180deg, rgba(166.07, 166.07, 166.07, 0) 0%, rgba(26, 28, 19, 0.70) 100%); border-radius: 20px;">
+                  <h3 style="color: white; font-size: 30px;">Гармония души</h3>
+                  <p style="color: #CACACA; font-size: 16px;">Пейзажи Края, которые способны восстановить силы</p>
+                </div>
+              </div>
+      
+              <!-- Слайд 3 -->
+              <div class="swiper-slide" style="width: 335px; position: relative;">
+                <img src="img/3_ind.jpg" style="width: 100%; height: 426px; border-radius: 20px; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(180deg, rgba(166.07, 166.07, 166.07, 0) 0%, rgba(26, 28, 19, 0.70) 100%); border-radius: 20px;">
+                  <h3 style="color: white; font-size: 30px;">Только вперед</h3>
+                  <p style="color: #CACACA; font-size: 16px;">Горные маршруты и активные приключения</p>
+                </div>
+              </div>
+      
+              <!-- Слайд 4 -->
+              <div class="swiper-slide" style="width: 335px; position: relative;">
+                <img src="img/4_ind.jpg" style="width: 100%; height: 426px; border-radius: 20px; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(180deg, rgba(166.07, 166.07, 166.07, 0) 0%, rgba(26, 28, 19, 0.70) 100%); border-radius: 20px;">
+                  <h3 style="color: white; font-size: 30px;">Заряд драйва</h3>
+                  <p style="color: #CACACA; font-size: 16px;">Открытие новых ощущений и заряд позитивных эмоций</p>
+                </div>
+              </div>
+      
+              <!-- Слайд 5 -->
+              <div class="swiper-slide" style="width: 335px; position: relative; background-color: #A1BE7D; border-radius: 20px;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(180deg, rgba(166.07, 166.07, 166.07, 0) 0%, rgba(26, 28, 19, 0.70) 100%); border-radius: 20px;">
+                  <h3 style="color: white; font-size: 30px;">Создай свое незабываемое приключение</h3>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Кнопки навигации -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class = "putiv"> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.swiper-container', {
+      slidesPerView: 'auto', // Автоматическое количество видимых слайдов
+      spaceBetween: 30, // Отступ между слайдами
+      centeredSlides: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        // Адаптивность для разных экранов
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+    });
+  });
+    </script>
+
+<div style="margin-left: 15%; width: 70%; height: 466px; padding: 80px 20px; background: url('img/блок_путешествие_в_формате_игры_фон.png') center/cover;">
+   
+    
+    <div class = "putivv" style="display: grid; grid-template-columns: 1fr 1fr; margin-top: -50px; ; ">
+        <div style="grid-column: 1; ">
+            <h2 style="width: 70%;font-size: 40px; text-align: center; margin-bottom: 50px;">Путешествие в формате игры</h2>
+            <button style=" background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 50px; margin-top: 200px; margin-left: 25px;">
+                Хочу присоединиться!
+              </button>
+        </div>
+        
+        
+        <div style="max-width: 800px; text-align: center; grid-column: 2; display: grid; grid-template-rows:  1fr 1fr; gap: 90px">
+            <div style=" grid-row: 1; margin-left: -70px; width: 100%;">
+                <img src="img/xnjfn.png" style="width: 50px; margin-top: 20px;">
+              <p style="font-size: 30px; ">Выполняйте квесты и получайте вознаграждение в виде коинов</p>
+              
+            </div>
+            
+            <div style="grid-row: 2; margin-left: -130px;">
+                <img src="img/xnjfn.png" style="width: 50px; margin-top: 20px; ">
+              <p style="font-size: 30px;">Посещайте интересные места и достопримечательности</p>
+              
+            </div>
+            
+            
+          </div>
+    </div>
+    
+  </div>
+        
+    </div>
+    <div class = "contact">
+        <!-- Footer -->
+<footer style="background: #1A1C13; color: white; padding: 50px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
+      <!-- Лого и навигация -->
+      <div>
+        <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-bottom: 30px;">
+          KrayGo
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 15px;">
+          <a href="#" style="color: white; text-decoration: none;">Главная</a>
+          <a href="#" style="color: white; text-decoration: none;">Личный кабинет</a>
+          <a href="#" style="color: white; text-decoration: none;">FAQ</a>
+          <a href="#" style="color: white; text-decoration: none;">О нас</a>
+        </nav>
+      </div>
+      
+      <!-- Язык и кнопка -->
+      <div style="text-align: right;">
+        <div style="margin-bottom: 20px;">
+          RU/ENG
+        </div>
+        <a href="#" style="color: white; text-decoration: underline;">Кнопка для сотрудничества</a>
+      </div>
+    </div>
+  </footer>
+        
+    </div>
+    </div>
+</body>
+</html>

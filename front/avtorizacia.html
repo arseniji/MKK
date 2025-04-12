@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>вход</title>
+    <link rel="stylesheet" href="avtorizacia.css">
+</head>
+<body>
+    <form class="form-table">
+        <h1 style="text-align: center; font-size: larger; font-weight: bold; padding-bottom: 20px;">Вход</h1>
+                <hr>
+                
+                <div class = "form-row">
+                    <label for = "name"><b>логин</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type ="text" placeholder = "введите логин" class = "login" name = "name" >
+                    <p id="error-message_login" style="color: red; display: none;">логин должнен состоять от 3 до 16 букв латинского алфафита</p> 
+                </div>
+                </div>
+                <div class = "form-row">
+                    <label for = "passwd"><b>пароль</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type = "password" placeholder="введите пароль" name = "password1" class = "passwd1">
+                    <p id="error-message_passwd1" style="color: red; display: none;">Некорректный пароль</p>
+                    </div>
+                </div>
+                <div><button type = "submit">отправить</button></div>
+    </form>
+    <script src = "avtorizacia.js"></script>
+</body>
+</html>

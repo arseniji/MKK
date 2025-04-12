@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>главная</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body >
+    <div class = "headd">
+        <div id="user-profile" style="display: none;">
+            <a href="accaunt.html">Личный кабинет</a>
+            <button id="logoutButton">Выйти</button>
+        </div>
+        <div class = "hh">
+            <div><p class = "kray">KrayGo</p></div>
+            <div style = "display: flex; flex-direction: row; gap: 20px">
+                <p class = "text_head">Главная</p>
+            <p class = "text_head">Города</p>
+            <p class = "text_head">Места</p>
+            <p class = "text_head">О нас</p>
+            <p class = "text_head">FAQ</p>
+            </div>
+            <div style = "display: flex; flex-direction: row; padding-left: 100px;">
+                <select class = "language">
+                    <option>en</option>
+                    <option>ru</option>
+                    <option>ch</option>
+                    <option>ar</option>
+                </select>
+                <button onclick="window.location.href='avtorizacia.html'" class = "buttons" style = "display: block;"><p>вход</p></button>
+                <button onclick="window.location.href='registr.html'" class = "buttons" style = "display: block;"> <p>регистарция</p></button>
+            </div>
+            
+
+        </div>
+    </div>
+    <div class = "glav_text">
+        <h1 class = "g_t"></h1>
+    </div>
+    <div class = "opisanie">
+        <p  class = "opisanie_text"> тут будет всякая пп по типу краснодарский красй такой то такой то и такой то переходите на направления или на популярные достопримечательности</p>
+    </div>
+    <div class = "navigate">
+        <h1 style="text-align: center; font-size: 70px;">навигация</h1>
+    </div>
+    <div class = "nav_4_sh">
+        <div class ="nav_1" onclick="window.location.href='history.html'">
+            <img src = "img/hidtory.jpg">
+            <h6>исторический</h6>
+            <p>описание исторического</p>
+            <button>перейти</button>
+        </div>
+        <div class = "nav_2" onclick="window.location.href='sea.html'">
+            <img src = "img/moreee.jpg">
+            <h6>рекреационный</h6>
+            <p>описание рекреационного</p>
+            <button>перейти</button>
+        </div>
+        <div class = "nav_3" onclick="window.location.href='sport.html'">
+            <img src = "img/more.jpg">
+            <h6>спортивный</h6>
+            <p>описание спортивного</p>
+            <button>перейти</button>
+        </div>
+        <div class = "nav_4" onclick="window.location.href='nature.html'">
+            <img src = "img/nature.jpeg">
+            <h6>природный</h6>
+            <p>описание природы</p>
+            <button>перейти</button>
+        </div>
+    </div>
+    <div class = "popularuty_sob">
+        <h1 style="text-align: center; font-size: 70px; padding-top: 150px;"> популярные работы</h1>
+    </div>
+    <div class="popul_scroll swiper">
+        <div class="swiper-wrapper">
+          <div class="pop_item swiper-slide">
+            <img src="img/sochi.webp" alt="Сочи">
+            <h6>Сочи</h6>
+            <p>Описание олимпийского дворика</p>
+            <button>Перейти</button>
+          </div>
+        <div class = "pop_item swiper-slide">
+            <img src = "img/park.jpg">
+            <h6>парк галицкий</h6>
+            <p>описание галицкого</p>
+            <button>перейти</button>
+        </div>
+        <div class = "pop_item swiper-slide">
+            <img src = "img/gelen.jpg">
+            <h6>геленжик</h6>
+            <p>описание геленжика</p>
+            <button>перейти</button>
+        </div>
+        <div class = "pop_item swiper-slide">
+            <img src = "img/gelen.jpg">
+            <h6>геленжик</h6>
+            <p>описание геленжика</p>
+            <button>перейти</button>
+        </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  
+  <div class="swiper-pagination"></div>
+
+    </div>
+    <div class = "popularuty_sob">
+        <h1 style="text-align: center; font-size: 70px;"> города</h1>
+    </div>
+    <div class = "carta">
+        <div onclick="window.location.href='sochi.html'">
+            <img src ="img/metks.png" style ="width: 50px; height: 50px; margin-left: 50px; margin-top: 100px;" class ="img_city">
+        </div>
+        <div onclick="window.location.href='gelemd.html'">
+            <img src ="img/metks.png" style ="width: 50px; height: 50px; margin-left: 10px; margin-top: 50px;"  class ="img_city">
+        </div>
+        <div onclick="window.location.href='anapa.html'">
+            <img src ="img/metks.png" style ="width: 50px; height: 50px; margin-left: 50px; margin-top: 70px;"  class ="img_city">
+        </div>
+    </div>
+    <div class = "contact">
+        
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src= "index.js"></script>
+</body>
+</html>

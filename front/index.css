@@ -1,0 +1,172 @@
+.headd{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    
+    flex-direction: row;
+
+}
+.hh{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  gap: 40px;
+  height: 50px;
+}
+.kray{
+  text-align: top;  color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; line-height: 96.62px; letter-spacing: 1.21px; word-wrap: break-word
+}
+.text-head{
+  color: black; font-size: 16px; font-family: Roboto; font-weight: 400; line-height: 30px; word-wrap: break-word"
+}
+.glav_text{
+    margin-top: -5vh;
+    background-image: url('img/1.jpg');
+    background-size: cover;
+    background-position:top;
+    background-repeat: no-repeat;
+    object-fit:scale-down;
+    width: 100%;
+    height: 746px;
+    margin-top: -20vh;
+}
+.g_t{
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-left: 15px;
+    font-size: 50px;
+    font-style: italic;
+    color: white;
+}
+.opisanie{
+    width: 70%;
+    height: 60vh;
+    margin-left: 15%;
+    margin-top: 5vh;
+}
+.opisanie_text{
+    text-align: center;
+    font-size: 50px;
+    color: black;
+}
+.nav_4_sh{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;    
+    gap: 100px;   
+    width: 70%;                  
+    height: 150vh;                 
+    margin-left: 15%;
+
+}
+img{ width: 100%; height: 70%; object-fit: cover;}
+.nav_1{grid-row: 1; grid-column: 1; background-color: #2E2940; width: 100%;  height: 100%; display: flex; flex-direction: column; position: relative;}
+.nav_1 h6, .nav_1 p, .nav_1 button, .nav_2 h6, .nav_2 p, .nav_2 button, .nav_3 h6, .nav_3 p, .nav_3 button, .nav_4 h6, .nav_4 p, .nav_4 button {
+    padding: 10px;
+    color: white;
+}
+.nav_1 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav_1:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Тень становится больше */
+}
+.nav_2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Тень становится больше */
+}
+.nav_3:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Тень становится больше */
+}
+.nav_4:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Тень становится больше */
+}
+.nav_2{grid-row: 1; grid-column: 2; background-color: #2E2940; width: 100%;  height: 100%; display: flex; flex-direction: column; position: relative;transition: transform 0.3s ease, box-shadow 0.3s ease;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);}
+.nav_3{grid-row: 2; grid-column: 1; background-color: #2E2940; width: 100%;  height: 100%; display: flex; flex-direction: column; position: relative;transition: transform 0.3s ease, box-shadow 0.3s ease;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);}
+.nav_4{grid-row: 2; grid-column: 2; background-color: #2E2940; width: 100%;  height: 100%; display: flex; flex-direction: column; position: relative;transition: transform 0.3s ease, box-shadow 0.3s ease;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);}
+
+.contact{
+    width: 100%;
+    height: 40vh;
+    margin-top: 5vh;
+    background-color: #2E2940;
+}
+.carta{
+    margin-left: 20%;
+    background-image: url('img/рр.png');
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    object-fit:scale-down;
+    width: 60%;
+    height: 100vh;
+}
+.popul_scroll {
+    padding: 60px 0;
+  }
+  
+  .swiper-slide {
+    width: 280px;
+    transform: scale(1);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  
+  .swiper-slide-active {
+    transform: scale(1.1) !important;
+    opacity: 1 !important;
+  }
+  
+  .pop_item {
+    
+    box-shadow: 0 4px 12px rgba(10, 9, 9, 0.1);
+    padding-bottom: 20px;
+  }
+  
+  .pop_item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .pop_item h6 {
+    margin: 12px 16px 4px;
+    font-size: 18px;
+  }
+  
+  .pop_item p {
+    margin: 0 16px 12px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .pop_item button {
+    display: block;
+    margin: 0 16px;
+    padding: 8px 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .swiper-button-prev, 
+  .swiper-button-next {
+    color: #4CAF50;
+    background: rgba(255, 255, 255, 0.451);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .swiper-button-prev::after, 
+  .swiper-button-next::after {
+    font-size: 20px;
+  }

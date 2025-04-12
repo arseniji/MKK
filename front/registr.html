@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>регистарция</title>
+    <link rel="stylesheet" href = "registr.css">
+</head>
+<body>
+    <form class="form-table">
+        <h1 style="text-align: center; font-size: larger; font-weight: bold; padding-bottom: 20px;">Регистрация</h1>
+                <hr>
+                
+                <div class = "form-row">
+                    <label for = "name"><b>логин</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type ="text" placeholder = "введите логин" class = "login" name = "name" >
+                    <p id="error-message_login" style="color: red; display: none;">логин должнен состоять от 3 до 16 букв латинского алфафита</p> 
+                </div>
+                </div>
+                <div class = "form-row">
+                    <label for = "passwd"><b>пароль</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type = "password" placeholder="введите пароль" name = "password1" class = "passwd1">
+                    <p id="error-message_passwd1" style="color: red; display: none;">Некорректный пароль</p>
+                    </div>
+                </div>
+                <div class = "form-row">
+                    <label for = "passwd"><b>повторите пароль</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type = "password" placeholder="повторите пароль" name = "password2" class = "passwd2" >
+                    <p id="error-message_passwd2" style="color: red; display: none;">Некорректный пароль</p>
+                    </div>
+                </div>
+
+                <div class = "form-row">
+                    <label for = "phone_number"> <b> телефон</b></label> 
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type = "text" placeholder = "введите номер телефона" class = "phone_number" name = "phone_number">
+                    <p id="error-message_phone" style="color: red; display: none;">Некорректный номер телефона.</p>
+                    </div>
+                </div>
+                <div class = "form-row">
+                    <label for = "data"> <b> дата рождения</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type = "date" placeholder = "введите дату рождения" class = "data" name = "data" min = "1920-01-01" >
+                    <p id="error-message" style="color: red; display: none;">Некорректная дата рождения.</p>
+                    </div>
+                </div>
+                <div class = "form-row">
+                    <label for = "email"> <b> email</b></label>
+                    <div style="display: flex; flex-direction: column; width: 67%;">
+                    <input type = "text" placeholder = "введите почту" class = "email" name = "email" >
+                    <p id="error-message_email" style="color: red; display: none;">Некорректная почта</p>
+                    </div>
+                </div>
+                
+                
+
+                <div class = "form-row">
+                    <label for = "sex"><b> Пол</b></label>
+                    <fieldset>
+                        <div>
+                            <input type = "radio" id = "htmlcss" name = "sex" >
+                            <label for = "htmlcss"><b>Мужской</b></label>
+                        </div>
+                        <div>
+                            <input type = "radio" id = "htmlcs" name = "sex">
+                            <label for = "htmlcs"><b>Женский</b></label>
+                        </div>
+                    </fieldset>
+                </div>
+                
+                <div><button type = "submit">отправить</button></div>
+    </form>
+    <script src = "registr.js"></script>
+</body>
+</html>
