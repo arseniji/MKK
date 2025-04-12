@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name = "quests")
+@Table(name = "quest")
 public class Quest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

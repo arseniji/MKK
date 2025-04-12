@@ -14,20 +14,20 @@ public class Main {
         SpringApplication.run(Main.class, args);
         System.out.println("jddjdjdd");
     }
-//    @Bean
-//    CommandLineRunner initDatabase(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-//        return args -> {
-//            if (userRepository.findByName("admin").isEmpty()) {
-//                MyUser admin = new MyUser();
-//                admin.setName("admin"); // Исправлено на setName
-//                admin.setPassword(passwordEncoder.encode("admin123"));
-//                admin.setRoles("ROLE_ADMIN"); // Исправлено на setRoles
-//                admin.setEmail("admin@example.com");
-//                userRepository.save(admin);
-//                System.out.println("Создан тестовый пользователь: admin / admin123");
-//            }
-//        };
-//    }
+    @Bean
+    CommandLineRunner initDatabase(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        return args -> {
+            if (userRepository.findByName("admin").isEmpty()) {
+                MyUser admin = new MyUser();
+                admin.setName("admin"); // Исправлено на setName
+                admin.setPassword(passwordEncoder.encode("admin123"));
+                admin.setRoles("ROLE_ADMIN"); // Исправлено на setRoles
+                admin.setEmail("admin@example.com");
+                userRepository.save(admin);
+                System.out.println("Создан тестовый пользователь: admin / admin123");
+            }
+        };
+    }
 
 
 }
