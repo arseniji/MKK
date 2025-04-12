@@ -1,20 +1,29 @@
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5445/tourism
     username: admin
     password: 12345
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
-      write-dates-as-timestamps: false
-    logging:
-      level:
-        org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+      hibernate: DEBUG
