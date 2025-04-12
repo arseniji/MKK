@@ -1,24 +1,47 @@
 package org.example.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@Data
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "quest")
 public class Quest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String title;
-    private String description;
-    private int cost;
+    @Column(name = "quest_id")
+    private Integer questId;
 
+    @ManyToOne
+    @JoinColumn(name = "place_category_id")
+    private PlaceCategory placeCategory;
 
+    @Column(name = "quest_description", nullable = false)
+    private String questDescription;
+
+    // Getters and setters
+
+    public Integer getQuestId() {
+        return questId;
+    }
+
+    public void setQuestId(Integer questId) {
+        this.questId = questId;
+    }
+
+    public PlaceCategory getPlaceCategory() {
+        return placeCategory;
+    }
+
+    public void setPlaceCategory(PlaceCategory placeCategory) {
+        this.placeCategory = placeCategory;
+    }
+
+    public String getQuestDescription() {
+        return questDescription;
+    }
+
+    public void setQuestDescription(String questDescription) {
+        this.questDescription = questDescription;
+    }
 }
-

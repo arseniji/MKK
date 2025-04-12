@@ -1,21 +1,21 @@
 package org.example.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "place")
 @Data
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "place_id")
-    private int id;
+    private Integer id;
 
     @Column(name = "place_name", nullable = false)
     private String name;
@@ -31,11 +31,11 @@ public class Place {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
-    @ToString.Exclude // Исключаем из toString
+    @JsonIgnore
     private City city;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "place_category_id", nullable = false)
-    @ToString.Exclude // Исключаем из toString
+    @JsonIgnore
     private PlaceCategory category;
 }

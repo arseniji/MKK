@@ -1,9 +1,8 @@
 package org.example.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +10,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +22,7 @@ public class City {
     @Column(name = "city_description", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    @ToString.Exclude // Исключаем из toString
-    private List<Place> places = new ArrayList<>();
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Place> places;
 }

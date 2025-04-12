@@ -2,6 +2,8 @@ package org.example.controllers;
 
 import org.example.dto.RegistrationDto;
 import org.example.models.MyUser;
+import org.example.repository.CityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

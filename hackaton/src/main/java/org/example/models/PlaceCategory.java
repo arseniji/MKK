@@ -1,9 +1,10 @@
 package org.example.models;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,16 +12,20 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class PlaceCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "place_category_id")
-    private Long id;
+    private Integer id;
+
     @Column(name = "place_category_name", nullable = false)
     private String name;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    @ToString.Exclude // Исключаем из toString
-    private List<Place> places = new ArrayList<>();
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Place> places;
+
+    @OneToMany(mappedBy = "placeCategory", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Quest> quests;
 }
