@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
+        System.out.println("jddjdjdd");
     }
 //    @Bean
 //    CommandLineRunner initDatabase(UserRepository userRepository, PasswordEncoder passwordEncoder) {
