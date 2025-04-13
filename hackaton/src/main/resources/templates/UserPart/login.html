@@ -2,23 +2,275 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Вход</title>
+  <style>
+    /* Базовые настройки */
+    :root {
+      --main-bg: #f0f7f4; /* Светло-зеленый фон */
+      --card-bg: #ffffff; /* Белый фон карточки */
+      --accent: #3a7d44; /* Основной зеленый */
+      --highlight: #2d936c; /* Акцентный зелено-бирюзовый */
+      --text: #2b2d42; /* Темный текст */
+      --input-bg: #f8f9fa; /* Светлый фон инпутов */
+      --leaf-light: #a4c2a5; /* Светло-зеленый */
+      --leaf-dark: #5a9367; /* Темно-зеленый */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: var(--main-bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image:
+        url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=1380&t=st=1698765432~exp=1698766032~hmac=...'),
+        linear-gradient(to bottom, var(--main-bg), var(--main-bg));
+      background-blend-mode: overlay;
+      background-size: cover;
+    }
+
+    /* Карточка входа */
+    .auth-card {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 420px;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--leaf-light), var(--leaf-dark));
+    }
+
+    /* Заголовок */
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .auth-header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      position: relative;
+      display: inline-block;
+    }
+
+    .auth-header h1::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--highlight);
+      border-radius: 3px;
+    }
+
+    /* Форма */
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--input-bg);
+      border: 1px solid #d1e3d1;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--highlight);
+      box-shadow: 0 0 0 2px rgba(45, 147, 108, 0.2);
+    }
+
+    /* Кнопка */
+    .auth-btn {
+      background: linear-gradient(135deg, var(--highlight), var(--accent));
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 6px rgba(58, 125, 68, 0.1);
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(58, 125, 68, 0.15);
+      background: linear-gradient(135deg, var(--accent), var(--highlight));
+    }
+
+    /* Ссылка на регистрацию */
+    .auth-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #5a6d5a;
+    }
+
+    .auth-footer a {
+      color: var(--highlight);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .auth-footer a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--highlight);
+      transition: width 0.3s ease;
+    }
+
+    .auth-footer a:hover::after {
+      width: 100%;
+    }
+
+    /* Ошибки */
+    .auth-error {
+      background: #fdf2f2;
+      color: #dc3545;
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #dc3545;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Декоративные элементы природы */
+    .leaf-decoration {
+      position: absolute;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .leaf-1 {
+      top: -50px;
+      right: -30px;
+      width: 150px;
+      height: 150px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%233a7d44" d="M50 0 Q75 40 50 80 Q25 40 50 0"/></svg>');
+      background-repeat: no-repeat;
+    }
+
+    .leaf-2 {
+      bottom: -40px;
+      left: -20px;
+      width: 120px;
+      height: 120px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%232d936c" d="M50 0 Q90 50 50 100 Q10 50 50 0"/></svg>');
+      background-repeat: no-repeat;
+      transform: rotate(30deg);
+    }
+
+    /* Адаптивность */
+    @media (max-width: 480px) {
+      .auth-card {
+        padding: 1.5rem;
+        margin: 0 1rem;
+      }
+
+      .auth-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Вход</h1>
-<div th:if="${param.error}">
-  Неверное имя пользователя или пароль.
+<div class="auth-card">
+  <div class="leaf-decoration leaf-1"></div>
+  <div class="leaf-decoration leaf-2"></div>
+
+  <div class="auth-header">
+    <h1>Авторизация</h1>
+  </div>
+
+  <div th:if="${param.error}" class="auth-error">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+      <line x1="12" y1="9" x2="12" y2="13"></line>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+    Неверные учетные данные
+  </div>
+
+  <form th:action="@{/login}" method="post" class="auth-form">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+    <div class="form-group">
+      <label for="username">Логин</label>
+      <input type="text" id="username" name="username" class="form-control"
+             placeholder="Введите ваш логин" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" name="password" class="form-control"
+             placeholder="Введите ваш пароль" required>
+    </div>
+
+    <button type="submit" class="auth-btn">Войти в систему</button>
+  </form>
+
+  <div class="auth-footer">
+    Еще нет аккаунта? <a th:href="@{/register}">Создать учетную запись</a>
+  </div>
 </div>
-<form th:action="@{/login}" method="post">
-  <div>
-    <label>Имя пользователя:</label>
-    <input type="text" name="username"/>
-  </div>
-  <div>
-    <label>Пароль:</label>
-    <input type="password" name="password"/>
-  </div>
-  <button type="submit">Войти</button>
-</form>
-<p>Нет аккаунта? <a th:href="@{/register}">Зарегистрироваться</a></p>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>спорт</title>
+    <link rel="stylesheet" th:href="@{/css/sochi_history.css}"/>
+</head>
+<body style="overflow-x: hidden;">
+    <div class = "headd">
+        <div style="width: 100%; height: 50px; position: relative; background: white">
+            <div class = "headd">
+                <!-- Header -->
+        <div style="width: 100%; height: 100px; position: fixed; top: 0; background: white; z-index: 100; display: flex; align-items: center; padding: 0 20px;">
+            <!-- Логотип -->
+            <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-right: 50px;">
+              KrayGo
+            </div>
+            
+            <!-- Навигация -->
+            <nav style="display: flex; gap: 30px;">
+              <a href="#" style="color: black; text-decoration: none;">Главная</a>
+              <a href="#" style="color: black; text-decoration: none;">Города</a>
+              <a href="#" style="color: black; text-decoration: none;">Места</a>
+              <a href="#" style="color: black; text-decoration: none;">О нас</a>
+              <a href="#" style="color: black; text-decoration: none;">FAQ</a>
+            </nav>
+            
+            <!-- Кнопка входа и язык -->
+            <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;">
+                <div th:onclick="'window.location.href=\'' + @{/avtorizacia} + '\''"
+                     style="cursor: pointer; background: #1D1412; color: white; padding: 5px 15px; border-radius: 10px;">
+                    Войти
+                </div>
+              <div style="display: flex; align-items: center;">
+                EN
+                <div style="width: 17px; height: 8px; margin-left: 10px; border: 2px black solid;"></div>
+    </div>
+            </div>
+        </div>
+            </div>
+            </div>
+            </div>
+    <div class = "opisanie">
+        <p style="margin-left: 5%; padding-top: 25%; font-size: 60px;">сочи - природа</p>
+
+    </div>
+    <button style=" background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%; margin-left: 80%;">
+        дополнительно
+      </button>
+    <div class = "blocks">
+        <div class = "block_1">
+            <img src = "img/Хак 2/Национальный парк Сочинский.jpg">
+            <div>
+                <h3>Национальный парк «Сочинский» </h3>
+                <p>Крупнейший парк Кавказа с реликтовыми лесами, водопадами и пещерами. Здесь обитают зубры, олени и редкие птицы. Чем заняться: трекинг к Агурским водопадам, посещение Воронцовских пещер.</p>
+                <button class = "but">Подробней</button>
+                
+                </div>
+        </div>
+        <div class = "block_1">
+            <img src = "img/Хак 2/Каньон Псахо.jpg">
+            <div>
+                <h3>Каньон «Псахо»</h3>
+                <p>Живописное ущелье с бирюзовыми реками, субтропической растительностью и каменными арками. Чем заняться: прогулка по деревянным мостикам, купание в природных чашах.</p>
+                <button class = "but">Подробней</button>
+                
+                </div>
+                
+        </div>
+        <div class = "block_1">
+            <img src = "img/Хак 2/Гора Ахун.JPG">
+            <div>
+            <h3>Гора Ахун </h3>
+            <p>Смотровая площадка (663 м) с панорамой Сочи и моря. На вершине — 30-метровая башня в романском стиле. Чем заняться: подъем на канатной дороге, дегустация местного меда и чая.</p>
+            <button class = "but">Подробней</button>
+            
+            </div>
+        </div>
+    </div>
+    <div>
+            <button style=" background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%;  margin-left: 43%;">
+                Хочу присоединиться!
+              </button>
+    </div>
+    <div class = "contact" style = "margin-top: 5%;">
+
+        <footer style="background: #1A1C13; color: white; padding: 50px 20px;">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
+              <!-- Лого и навигация -->
+              <div>
+                <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-bottom: 30px;">
+                  KrayGo
+                </div>
+                <nav style="display: flex; flex-direction: column; gap: 15px;">
+                  <a href="#" style="color: white; text-decoration: none;">Главная</a>
+                  <a href="#" style="color: white; text-decoration: none;">Личный кабинет</a>
+                  <a href="#" style="color: white; text-decoration: none;">FAQ</a>
+                  <a href="#" style="color: white; text-decoration: none;">О нас</a>
+                </nav>
+              </div>
+              
+              
+        
+              <!-- Язык и кнопка -->
+              <div style="text-align: right;">
+                <div style="margin-bottom: 20px;">
+                  RU/ENG
+                </div>
+                <a href="#" style="color: white; text-decoration: underline;">Кнопка для сотрудничества</a>
+              </div>
+            </div>
+          </footer>
+                
+            
+        
+    </div>
+</body>
+</html>

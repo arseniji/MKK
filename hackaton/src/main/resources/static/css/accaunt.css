@@ -1,0 +1,27 @@
+.profile{
+    margin-top: 10px;
+    margin-left: 20%;
+    border: 1px solid #e28d6f;
+    border-radius: 5px;
+    width: 60%;
+    height: 300px;
+    background-color: #efd1c6;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    
+}
+.profile_text{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    
+    
+}
+.headd{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    background-color: #2E2940;
+    flex-direction: row;
+}

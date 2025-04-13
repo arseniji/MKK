@@ -28,7 +28,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/static/**", "/index.css/**").permitAll()
+                        .requestMatchers("/static/**").permitAll()
                         .requestMatchers("/", "/home", "/register", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/user/**").permitAll()
                         .requestMatchers("/admin/**").permitAll()
@@ -36,7 +36,7 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/personal")
+                        .defaultSuccessUrl("/accaunt")
                         .permitAll()
                 )
                 .logout(logout -> logout

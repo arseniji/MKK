@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Аккаунт пользователя</title>
+    <style>
+        /* Общие стили как в регистрации */
+        :root {
+            --main-bg: #f0f7f4;
+            --card-bg: #ffffff;
+            --accent: #3a7d44;
+            --highlight: #2d936c;
+            --text: #2b2d42;
+            --input-bg: #f8f9fa;
+            --leaf-light: #a4c2a5;
+            --leaf-dark: #5a9367;
+        }
+
+        body {
+            background: var(--main-bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #d1e3d1;
+            margin-bottom: 30px;
+        }
+
+        .header-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: var(--highlight);
+            transform: translateY(-2px);
+        }
+
+        /* Карточка профиля */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .profile-title {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .profile-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--highlight);
+        }
+
+        /* Профиль */
+        .profile {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 3px solid var(--leaf-light);
+        }
+
+        .profile-info {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .profile-text {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: var(--input-bg);
+            border-radius: 8px;
+            border: 1px solid #d1e3d1;
+        }
+
+        .profile-text p:first-child {
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 10px;
+            min-width: 180px;
+        }
+
+        .profile-text p:last-child {
+            color: var(--text);
+        }
+
+        .wallet-btn {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--highlight), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .wallet-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(58, 125, 68, 0.15);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <button class="header-btn" onclick="window.location.href='/'">Главная страница</button>
+    </div>
+
+    <div class="profile-card">
+        <h1 class="profile-title">Аккаунт пользователя</h1>
+
+        <div class="profile">
+            <img src="/img/1" alt="Фото пользователя" class="profile-img">
+
+            <div class="profile-info">
+                <div class="profile-text">
+                    <p>Логин:</p>
+                    <p id="login_text">Login</p>
+                </div>
+
+                <div class="profile-text">
+                    <p>Email:</p>
+                    <p id="email_text">danya.vishnyakov.2006@mail.ru</p>
+                </div>
+
+                <div class="profile-text">
+                    <p>Баланс кошелька:</p>
+                    <p id="balance_text">255 ₽</p>
+                </div>
+
+                <div class="profile-text">
+                    <p>Телефон:</p>
+                    <p id="phone_text">+79880805606</p>
+                </div>
+
+                <div class="profile-text">
+                    <p>Дата рождения:</p>
+                    <p id="birthdate_text">20.04.2006</p>
+                </div>
+
+                <div class="profile-text">
+                    <p>Активные промоакции:</p>
+                    <p id="promo_text">Нет активных промоакций</p>
+                </div>
+                <button class="wallet-btn"
+                        style="cursor: pointer;"
+                        th:onclick="'window.location.href=\'' + @{/magazine} + '\''">Конвертация кошелька
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

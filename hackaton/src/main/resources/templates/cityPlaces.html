@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${cityName} + ' - Places'"></title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: Roboto, Arial, sans-serif;
+            background: #F7F7F7;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            width: 800px;
+            background: #F7F7F7;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        /* Стили карточек мест */
+        .place-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background: white;
+        }
+
+        /* Стили карт */
+        .map_anapa, .map_gelen, .map_sochi { display: none; }
+        .map_anapa_v, .map_gelen_v, .map_sochi_v {
+            display: block;
+            width: 637px;
+            height: 375px
+        }
+
+        /* Заголовки секций */
+        .section-title {
+            color: black;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 20px 0 10px 0;
+        }
+
+        /* Блоки квеста */
+        .quest-block {
+            width: 580px;
+            height: 52px;
+            background: #FC7C5D;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            margin: 10px 0;
+            color: black;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .description-block {
+            width: 638px;
+            background: #ECECEC;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        /* Кнопки */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .button-success {
+            background: #D0ECC6;
+            color: black;
+        }
+
+        .button-secondary {
+            background: #DBDBDB;
+            color: black;
+            font-weight: 300;
+        }
+
+        .button-primary {
+            background: #1D1412;
+            color: #FCFCFC;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 20px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-height: 80vh; /* Ограничиваем максимальную высоту */
+    overflow-y: auto; /* Добавляем прокрутку при необходимости */
+    display: flex;
+    flex-direction: column;
+}
+        .modal-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        /* Форма в модальном окне */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: #FC7C5D;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload-icon {
+            font-size: 48px;
+            color: #FC7C5D;
+            margin-bottom: 10px;
+        }
+
+        .preview-image {
+    max-width: 100%;
+    max-height: 200px; /* Ограничиваем высоту превью */
+    margin-top: 10px;
+    display: none;
+    border-radius: 5px;
+    object-fit: contain; /* Чтобы изображение сохраняло пропорции */
+}
+        .action-buttons {
+    margin-top: auto; /* Прижимаем кнопки к низу */
+    padding-top: 20px; /* Добавляем отступ сверху */
+}
+    </style>
+</head>
+<body>
+<!-- Основной контейнер -->
+<div class="container">
+    <!-- Название города -->
+    <h1 th:text="'Welcome to ' + ${cityName} + '!'"></h1>
+
+    <div class="section-title">Задание</div>
+    <div class="description-block">
+        <div>Сделать фото интересного узора на песке</div>
+
+
+
+            <div style="display: flex; align-items: center; margin-top: 60px">
+                <div style="justify-content: center; display: flex; flex-direction: column; color: black; font-size: 20px; font-family: Roboto; font-weight: 500; line-height: 60px; word-wrap: break-word">GoCoin:</div>
+                <div style="width: 12px; height: 17px; margin: 0 10px; justify-content: center; display: flex; flex-direction: column; color: black; font-size: 20px; font-family: Roboto; font-weight: 500; line-height: 60px; word-wrap: break-word">5</div>
+                <img style="width: 19.09px; height: 20px; transform: rotate(180deg); transform-origin: top left" src="/img/xnjfn.png" alt = "count" />
+
+            </div>
+
+    </div>
+
+    <!-- Секция с местами -->
+    <div class="section-title">Activities</div>
+    <div th:each="activity : ${activities}" class="place-card">
+        <h3 th:text="${activity.name}"></h3>
+        <p>Адрес: <span th:text="${activity.address}"></span></p>
+        <p>Описание: <span th:text="${activity.description}"></span></p>
+        <p>Рейтинг: <span th:text="${activity.rating}"></span></p>
+        <p>Категория: <span th:text="${activity.categoryName}"></span></p>
+
+        <!-- Квест для этого места -->
+        <div th:if="${placeQuests.containsKey(activity.id)}" class="quest-block"
+             th:text="${placeQuests.get(activity.id).description}">
+        </div>
+    </div>
+
+    <div class="section-title">Food Places</div>
+    <div th:each="foodPlace : ${foodPlaces}" class="place-card">
+        <h3 th:text="${foodPlace.name}"></h3>
+        <p>Адрес: <span th:text="${foodPlace.address}"></span></p>
+        <p>Описание: <span th:text="${foodPlace.description}"></span></p>
+        <p>Рейтинг: <span th:text="${foodPlace.rating}"></span></p>
+        <p>Категория: <span th:text="${foodPlace.categoryName}"></span></p>
+
+        <!-- Квест для этого места -->
+
+    </div>
+
+    <div class="section-title">Hotels</div>
+    <div th:each="hotel : ${hotels}" class="place-card">
+        <h3 th:text="${hotel.name}"></h3>
+        <p>Адрес: <span th:text="${hotel.address}"></span></p>
+        <p>Описание: <span th:text="${hotel.description}"></span></p>
+        <p>Рейтинг: <span th:text="${hotel.rating}"></span></p>
+        <p>Категория: <span th:text="${hotel.categoryName}"></span></p>
+
+        <!-- Квест для этого места -->
+        <div th:if="${placeQuests.containsKey(hotel.id)}" class="quest-block"
+             th:text="${placeQuests.get(hotel.id).description}">
+            <div style="margin: 0 10px; font-size: 20px; font-weight: 500;">5</div>
+
+        </div>
+    </div>
+
+    <!-- Блок с местоположением -->
+    <div class="section-title">Месторасположение</div>
+    <div class="map-container">
+        <img class="map_anapa" src="/img/карта_анапа.jpg" />
+        <img class="map_gelen" src="/img/карта_гелен.jpg" />
+        <img class="map_sochi" src="/img/карта_сочи.jpg" />
+    </div>
+
+    <!-- Блок кнопок принятия квеста -->
+    <div class="action-buttons">
+        <button id="acceptQuestBtn" class="button button-success">Принять квест</button>
+        <button class="button button-secondary">Отказаться</button>
+    </div>
+
+
+</div>
+
+<!-- Модальное окно для принятия квеста -->
+<div id="questModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-title">Принять квест</div>
+
+        <form id="questForm">
+            <div class="form-group">
+                <label for="questComment">Комментарий:</label>
+                <textarea id="questComment" class="form-control" placeholder="Напишите ваш комментарий..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Добавьте фото:</label>
+                <div class="file-upload" id="fileUpload">
+                    <div class="file-upload-icon">📷</div>
+                    <div>Нажмите для загрузки фото</div>
+                    <input type="file" id="questPhoto" accept="image/*">
+                    <img id="previewImage" class="preview-image" alt="Предпросмотр">
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button type="submit" class="button button-primary">Отправить задание</button>
+                <button type="button" id="cancelQuestBtn" class="button button-secondary">Отмена</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Активация нужной карты в зависимости от города
+    document.addEventListener('DOMContentLoaded', function() {
+        const cityName = '[[${cityName}]]'.toLowerCase();
+        if (cityName.includes('анапа')) {
+            document.querySelector('.map_anapa').classList.add('map_anapa_v');
+        } else if (cityName.includes('гелен')) {
+            document.querySelector('.map_gelen').classList.add('map_gelen_v');
+        } else if (cityName.includes('сочи')) {
+            document.querySelector('.map_sochi').classList.add('map_sochi_v');
+        }
+
+        // Получаем элементы модального окна
+        const modal = document.getElementById("questModal");
+        const btn = document.getElementById("acceptQuestBtn");
+        const span = document.getElementsByClassName("close")[0];
+        const cancelBtn = document.getElementById("cancelQuestBtn");
+        const fileUpload = document.getElementById("fileUpload");
+        const fileInput = document.getElementById("questPhoto");
+        const previewImage = document.getElementById("previewImage");
+
+        // Открываем модальное окно при нажатии на кнопку
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Закрываем модальное окно при нажатии на крестик
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Закрываем модальное окно при нажатии на кнопку отмены
+        cancelBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Закрываем модальное окно при клике вне его
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Обработка загрузки файла
+        fileUpload.onclick = function() {
+            fileInput.click();
+        }
+
+        fileInput.onchange = function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    previewImage.src = event.target.result;
+                    previewImage.style.display = "block";
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Обработка отправки формы
+        document.getElementById("questForm").onsubmit = function(e) {
+            e.preventDefault();
+            // Здесь можно добавить обработку данных формы
+            alert("Квест успешно принят!");
+            modal.style.display = "none";
+            return false;
+        }
+    });
+</script>
+</body>
+</html>

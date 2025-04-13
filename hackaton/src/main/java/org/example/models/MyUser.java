@@ -9,12 +9,12 @@ import lombok.Getter;
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer users_id;
 
     @Column(unique = true)
     private String name;
     private String password;
     private String email;
     private String roles;
-    private  int coins;
+    private int coins;
 }

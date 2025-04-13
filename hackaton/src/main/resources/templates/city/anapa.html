@@ -1,10 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>спорт</title>
+    <link rel="stylesheet" th:href="@{/css/gelemd.css}"/>
 </head>
-<body>
+<body style="overflow-x: hidden;">
+    <div class = "headd">
+        <div style="width: 100%; height: 50px; position: relative; background: white">
+            <div class = "headd">
+                <!-- Header -->
+        <div style="width: 100%; height: 100px; position: fixed; top: 0; background: white; z-index: 100; display: flex; align-items: center; padding: 0 20px;">
+            <!-- Логотип -->
+            <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-right: 50px;">
+              KrayGo
+            </div>
+            
+            <!-- Навигация -->
+            <nav style="display: flex; gap: 30px;">
+              <a href="#" style="color: black; text-decoration: none;">Главная</a>
+              <a href="#" style="color: black; text-decoration: none;">Города</a>
+              <a href="#" style="color: black; text-decoration: none;">Места</a>
+              <a href="#" style="color: black; text-decoration: none;">О нас</a>
+              <a href="#" style="color: black; text-decoration: none;">FAQ</a>
+            </nav>
+            
+            <!-- Кнопка входа и язык -->
+            <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;">
+                <div th:onclick="'window.location.href=\'' + @{/avtorizacia} + '\''"
+                     style="cursor: pointer; background: #1D1412; color: white; padding: 5px 15px; border-radius: 10px;">
+                    Войти
+                </div>
+              <div style="display: flex; align-items: center;">
+                EN
+                <div style="width: 17px; height: 8px; margin-left: 10px; border: 2px black solid;"></div>
+    </div>
+            </div>
+        </div>
+            </div>
+            </div>
+    </div>
+    <div class = "opisanie">
+        <h2 style="text-align: center; font-size: 70px;">Анапа</h2>
+    </div>
+    <div>
+        <p style = "text-align: center; width: 70%; margin-left: 15%; font-size: 25px;">Самый солнечный курорт России с песчаными и галечными пляжами, славится мелководным тёплым морем и лечебными грязями. Античная история, аквапарки и винодельни создают баланс между познавательным и расслабленным отдыхом. Отлично подходит для родителей с детьми и любителей спокойного отпуска.</p>
 
+    </div>
+    <div class = "blocks">
+        <div class = "block_1">
+            <img src = "img/Музей Горгиппия, Анапа.jpg">
+            <div>
+                <h6>Музей Горгиппия</h6>
+                <p>Экспозиция музея насчитывает свыше 50 тысяч экспонатов, обнаруженных при археологических раскопках древнего городища. Здесь найдено множество античных предметов: скульптур, амфор, монет, утвари, украшений, орудий труда.</p>
+                <button style="cursor: pointer; background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%;  margin-left: 43%;"
+                        th:onclick="'window.location.href=\'' + @{/anapa_history} + '\''">Хочу Присоединиться!
+                </button>
+                
+                </div>
+        </div>
+        <div class = "block_1">
+            <img src = "img/Водопад Жемчужный, Анапа.jpg">
+            <div>
+                <h6>Водопад Жемчужный</h6>
+                <p>Водопад, расположенный в окрестностях Анапы, считается настоящий природный жемчужиной этих мест. Стремительный поток, несущий свои воды с 5-метровой высоты, разбивается о камни и распадается на белые капли, которые переливаются на солнце как жемчуг.</p>
+                <button style="cursor: pointer; background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%;  margin-left: 43%;"
+                        th:onclick="'window.location.href=\'' + @{/anapa_nature} + '\''">Хочу Присоединиться!
+                </button>
+                
+                </div>
+        </div>
+        <div class = "block_1">
+            <img src = "img/Маяк, Анапа.jpg">
+            <div>
+            <h6>Маяк</h6>
+            <p>Восьмигранная белая башня маяка с широкими черными полосами расположена на берегу, а прожектор возвышается над уровнем моря на 43 метра. Маяк является символом Анапы.</p>
+            <button style="cursor: pointer; background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%;  margin-left: 43%;"
+                    th:onclick="'window.location.href=\'' + @{/anapa_sea} + '\''">Хочу Присоединиться!
+            </button>
+            
+            </div>
+        </div>
+        <div class = "block_1">
+            <img src = "img/Хак 2/Конно-спортивный клуб Фортуна.jpg">
+            <div>
+            <h6>Конно-спортивный клуб "Фортуна"</h6>
+            <p>Клуб предлагает конные прогулки по предгорьям и уроки верховой езды. Есть маршруты для детей. Активности: прогулки верхом, фотосессии с лошадьми, конкурные тренировки.</p>
+            <button style="cursor: pointer; background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%;  margin-left: 43%;"
+                    th:onclick="'window.location.href=\'' + @{/anapa_sport} + '\''">Хочу Присоединиться!
+            </button>
+            
+            </div>
+        </div>
+        <button style="cursor: pointer; background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 5%;"
+                th:onclick="'window.location.href=\'' + @{/Анапа} + @{/cityPlaces} + '\''">Создать квест
+        </button>
+        
+    </div>
+    <div class = "contact" style = "margin-top: 5%;">
+        <footer style="background: #1A1C13; color: white; padding: 50px 20px;">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
+              <!-- Лого и навигация -->
+              <div>
+                <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-bottom: 30px;">
+                  KrayGo
+                </div>
+                <nav style="display: flex; flex-direction: column; gap: 15px;">
+                  <a href="#" style="color: white; text-decoration: none;">Главная</a>
+                  <a href="#" style="color: white; text-decoration: none;">Личный кабинет</a>
+                  <a href="#" style="color: white; text-decoration: none;">FAQ</a>
+                  <a href="#" style="color: white; text-decoration: none;">О нас</a>
+                </nav>
+              </div>
+              
+              
+        
+              <!-- Язык и кнопка -->
+              <div style="text-align: right;">
+                <div style="margin-bottom: 20px;">
+                  RU/ENG
+                </div>
+                <a href="#" style="color: white; text-decoration: underline;">Кнопка для сотрудничества</a>
+              </div>
+            </div>
+          </footer>
+    </div>
 </body>
 </html>

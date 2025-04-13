@@ -1,6 +1,7 @@
 package org.example.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.javafaker.Bool;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,14 @@ public class Place {
 
     @Column(name = "rating")
     private Double rating;
+    public Double getRating() {
+        if (this.rating != null) {
+            return Math.round(this.rating * 10.0) / 10.0;
+        }
+        return null;
+    }
+    @Column(name = "time_length", nullable = false, columnDefinition = "default boolean false")
+    private Boolean time_length;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
