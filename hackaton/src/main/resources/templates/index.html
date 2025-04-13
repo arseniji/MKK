@@ -1,179 +1,656 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>главная</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
-        .headd{
-        display: flex;
-        flex-direction: row;
-    width: 100%;
-    height: 10vh;
-    background-color: #2E2940;
-
+        .carta{
+  background-image: url("img/map.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  margin: 5%;
+  width: 90%;
+  height: 950px;
+  margin-top: 5%;
+  
 }
-.glav_text{
-    margin-top: -5vh;
-    background-image: url('img/more_man.jpg');
-    background-size: cover;
-    background-position:top;
-    background-repeat: no-repeat;
-    object-fit:scale-down;
-    width: 100%;
-    height: 60vh;
-}
-.g_t{
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    padding-left: 15px;
-    font-size: 50px;
-    font-style: italic;
-    color: white;
-}
-.opisanie{
-    width: 70%;
-    height: 60vh;
-    margin-left: 15%;
-    margin-top: 5vh;
-}
-.opisanie_text{
-    text-align: center;
-    font-size: 50px;
-    color: black;
-}
-.nav_4_sh{
-    display: grid;
-    grid-template-columns: 50vh 50vh;
-    grid-template-rows: 50vh 50vh;
-    height: 155vh;
-    gap: 40vh;
-}
-img{ width: 100%; height: 100%;}
-.nav_1{
-    grid-row: 1; grid-column: 1;
-}
-.nav_2{
-    grid-row: 1; grid-column: 2;
-}
-.nav_3{
-    grid-row: 2; grid-column: 1;
-}
-.nav_4{
-    grid-row: 2; grid-column: 2;
-}
-.popul_scroll{
-    display: grid;
-    grid-template-columns: 40vh 40vh 40vh;
-    grid-template-rows: 50vh;
-    gap: 20vh;
-    height: 70vh;
-}
-.contact{
-    width: 100%;
-    height: 40vh;
-    margin-top: 5vh;
-    background-color: #2E2940;
-}
-
+        /* Общие стили */
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s;
+        }
+        
+        /* Стили для RTL (арабский) */
+        body[dir="rtl"] {
+            direction: rtl;
+        }
+        body[dir="rtl"] .headd {
+            text-align: right;
+        }
+        body[dir="rtl"] nav {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        
+        /* Header */
+        .headd {
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            background: white;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            color: #FC7C5D;
+            font-size: 40px;
+            font-style: italic;
+            font-weight: 700;
+            margin-right: 50px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+            margin-right: auto;
+        }
+        
+        nav a {
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #FC7C5D;
+        }
+        
+        .auth-btn {
+            background: #1D1412;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .auth-btn:hover {
+            background: #FC7C5D;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 101;
+        }
+        
+        .lang-dropdown.show {
+            display: block;
+        }
+        
+        .lang-option {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        .lang-option:hover {
+            background: #f5f5f5;
+        }
+        
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: 746px;
+            position: relative;
+            margin-top: 100px;
+        }
+        
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        
+        .hero-text {
+            position: absolute;
+            bottom: 100px;
+            left: 50px;
+            color: white;
+            max-width: 800px;
+        }
+        
+        .hero-text h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Направления */
+        .navigate {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .navigate h2 {
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        /* Остальные стили остаются как в вашем оригинальном коде */
+        /* ... */
+        
+        /* Адаптация для RTL */
+        body[dir="rtl"] .hero-text {
+            right: 50px;
+            left: auto;
+        }
+        
+        body[dir="rtl"] .putivv {
+            direction: rtl;
+        }
+        
+        body[dir="rtl"] .swiper-button-prev {
+            right: auto;
+            left: 10px;
+        }
+        
+        body[dir="rtl"] .swiper-button-next {
+            left: auto;
+            right: 10px;
+        }
     </style>
 </head>
-<body>
-    <div class = "headd">
-        <div><p >аккаунт</p></div>
-        <div>
-            <a th:href="@{/login}"><button>Вход</button></a>
-            <!-- Кнопка "Регистрация" -->
-            <a th:href="@{/register}"><button>Регистрация</button></a>
+<body style="overflow-x: hidden;">
+    <div style="width: 100%; position: relative; background: white">
+        <!-- Header -->
+        <div class="headd">
+            <div class="logo">KrayGo</div>
+            
+            <nav>
+                <a th:href="@{/}">Главная</a>
+                <a href="#cart" data-i18n="menu.cities" >Города</a>
+                <a href="#con" data-i18n="menu.about">О нас</a>
+                <a href="#con" data-i18n="menu.faq">FAQ</a>
+            </nav>
+            <div class="lang-switcher" onclick="toggleLangDropdown()">
+                <span id="current-lang">RU</span>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <div class="lang-option" onclick="changeLanguage('ru')" >Русский (RU)</div>
+                    <div class="lang-option" onclick="changeLanguage('en')">English (EN)</div>
+                    <div class="lang-option" onclick="changeLanguage('ar')">العربية (AR)</div>
+                    <div class="lang-option" onclick="changeLanguage('zh')">中文 (ZH)</div>
+                </div>
+            </div>
+            <div class="auth-btn"
+                 th:onclick="'window.location.href=\'' + @{/login} + '\''"
+                 style="cursor: pointer;">
+                Войти
+            </div>
+            <div id="user-profile" data-i18n="menu.profile" style="display: none;">
+              <!-- Дополнительные элементы для авторизованных пользователей -->
+              <button id="logoutButton">Выйти</button>
+          </div>
+            
+            
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <img src="img/1.jpg" alt="Krasnodar Krai">
+            <div class="hero-text">
+                <h1 data-i18n="hero.title">Вам открыта новая местность — Краснодарский Край</h1>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Подключаем библиотеку i18next для переводов -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.10/i18next.min.js"></script>
+    <script>
+        // Инициализация системы переводов
+        i18next.init({
+            lng: 'ru', // язык по умолчанию
+            resources: {
+                ru: {
+                    translation: {
+                        "menu.home": "Главная",
+                        "menu.cities": "Города",
+                        "menu.places": "Места",
+                        "menu.about": "О нас",
+                        "menu.faq": "FAQ",
+                        "menu.login": "Войти",
+                        "hero.title": "Вам открыта новая местность — Краснодарский Край",
+                        "directions.title": "Направления",
+                        "menu.profile": "Профиль",
+                        // Добавьте все остальные тексты для перевода
+                    }
+                },
+                en: {
+                    translation: {
+                      "menu.profile": "Profile",
+                        "menu.home": "Home",
+                        "menu.cities": "Cities",
+                        "menu.places": "Places",
+                        "menu.about": "About",
+                        "menu.faq": "FAQ",
+                        "menu.login": "Login",
+                        "hero.title": "Discover the new territory — Krasnodar Krai",
+                        "directions.title": "directions",
+                        // Английские переводы
+                    }
+                },
+                ar: {
+                    translation: {
+                        "menu.home": "الصفحة الرئيسية",
+                        "menu.cities": "مدن",
+                        "menu.places": "أماكن",
+                        "menu.about": "معلومات عنا",
+                        "menu.faq": "التعليمات",
+                        "menu.login": "تسجيل الدخول",
+                        "hero.title": "أمامك منطقة جديدة - إقليم كراسنودار",
+                        "directions.title": "الاتجاهات",
+                        // Арабские переводы
+                    }
+                },
+                zh: {
+                    translation: {
+                        "menu.home": "主页",
+                        "menu.cities": "城市",
+                        "menu.places": "地方",
+                        "menu.about": "关于我们",
+                        "menu.faq": "常见问题",
+                        "menu.login": "登录",
+                        "hero.title": "向您开放的新领土 - 克拉斯诺达尔边疆区",
+                        "directions.title": "方向",
+                        // Китайские переводы
+                    }
+                }
+            }
+        });
+
+        // Функция для переключения языка
+        function changeLanguage(lang) {
+            i18next.changeLanguage(lang, (err, t) => {
+                if (err) return console.error(err);
+                
+                // Обновляем все элементы с атрибутом data-i18n
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    el.textContent = t(el.getAttribute('data-i18n'));
+                });
+                
+                // Обновляем текущий язык в switcher
+                document.getElementById('current-lang').textContent = lang.toUpperCase();
+                
+                // Для арабского меняем направление текста
+                if (lang === 'ar') {
+                    document.body.setAttribute('dir', 'rtl');
+                } else {
+                    document.body.removeAttribute('dir');
+                }
+                
+                // Закрываем dropdown
+                document.getElementById('lang-dropdown').classList.remove('show');
+            });
+        }
+
+        // Показать/скрыть dropdown с языками
+        function toggleLangDropdown() {
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        // Закрыть dropdown при клике вне его
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.lang-switcher')) {
+                document.getElementById('lang-dropdown').classList.remove('show');
+            }
+        });
+    </script>
+    <div class="navigate">
+      <div class="directions-grid">
+          <h2 data-i18n="directions.title">Направления</h2>
+          
+          <div class="grid-container">
+              <!-- Карточка 1 -->
+              <div class="grid-item"
+                   th:onclick="'window.location.href=\'' + @{/history} + '\''"
+                   style="cursor: pointer;">
+                  <div class="pop_item">
+                      <div class="pop_content" style="background-image: url('img/2_ind.jpg');">
+                          <h6 data-i18n="directions.slide1.title">Назад в прошлое</h6>
+                          <p data-i18n="directions.slide1.desc">Легенды, памятники и древние маршруты Краснодарского края</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Карточка 2 -->
+              <div class="grid-item"
+                   th:onclick="'window.location.href=\'' + @{/nature} + '\''"
+                   style="cursor: pointer;">
+                  <div class="pop_item">
+                      <div class="pop_content" style="background-image: url('img/3_ind.jpg');">
+                          <h6 data-i18n="directions.slide2.title">Гармония души</h6>
+                          <p data-i18n="directions.slide2.desc">Пейзажи Края, которые способны восстановить силы</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Карточка 3 -->
+              <div class="grid-item"
+                   th:onclick="'window.location.href=\'' + @{/sport} + '\''"
+                   style="cursor: pointer;">
+                  <div class="pop_item">
+                      <div class="pop_content" style="background-image: url('img/4_ind.jpg');">
+                          <h6 data-i18n="directions.slide3.title">Только вперед</h6>
+                          <p data-i18n="directions.slide3.desc">Горные маршруты и активные приключения</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Карточка 4 -->
+              <div class="grid-item"
+                   th:onclick="'window.location.href=\'' + @{/sea} + '\''"
+                   style="cursor: pointer;">
+                  <div class="pop_item">
+                      <div class="pop_content" style="background-image: url('img/5_ind.jpg');">
+                          <h6 data-i18n="directions.slide4.title">Заряд драйва</h6>
+                          <p data-i18n="directions.slide4.desc">Открытие новых ощущений и заряд позитивных эмоций</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+    <script>
+    // Добавьте эти переводы в ваш объект resources в i18next.init()
+    const additionalTranslations = {
+        en: {
+            translation: {
+                "directions.title": "Directions",
+                "directions.slide1.title": "Back to the past",
+                "directions.slide1.desc": "Legends, monuments and ancient routes of Krasnodar Krai",
+                "directions.slide2.title": "Harmony of soul",
+                "directions.slide2.desc": "Landscapes of the region that can restore your energy",
+                "directions.slide3.title": "Only forward",
+                "directions.slide3.desc": "Mountain routes and active adventures",
+                "directions.slide4.title": "Charge of drive",
+                "directions.slide4.desc": "Discovery of new sensations and a charge of positive emotions",
+                "directions.slide5.title": "Create your unforgettable adventure"
+            }
+        },
+        ar: {
+            translation: {
+                "directions.title": "الاتجاهات",
+                "directions.slide1.title": "العودة إلى الماضي",
+                "directions.slide1.desc": "أساطير ونصب وطرق قديمة لإقليم كراسنودار",
+                "directions.slide2.title": "تناغم الروح",
+                "directions.slide2.desc": "مناظر طبيعية للإقليم قادرة على استعادة طاقتك",
+                "directions.slide3.title": "إلى الأمام فقط",
+                "directions.slide3.desc": "طرق جبلية ومغامرات نشطة",
+                "directions.slide4.title": "شحنة من الحماس",
+                "directions.slide4.desc": "اكتشاف أحاسيس جديدة وشحنة من المشاعر الإيجابية",
+                "directions.slide5.title": "اصنع مغامرتك التي لا تنسى"
+            }
+        },
+        zh: {
+            translation: {
+                "directions.title": "方向",
+                "directions.slide1.title": "回到过去",
+                "directions.slide1.desc": "克拉斯诺达尔边疆区的传说、古迹和古老路线",
+                "directions.slide2.title": "灵魂和谐",
+                "directions.slide2.desc": "能够恢复力量的边疆区风景",
+                "directions.slide3.title": "只向前进",
+                "directions.slide3.desc": "山地路线和积极冒险",
+                "directions.slide4.title": "充满活力",
+                "directions.slide4.desc": "发现新感觉和充满积极情绪",
+                "directions.slide5.title": "创造你难忘的冒险"
+            }
+        }
+    };
+    
+    // Объедините с существующими переводами
+    i18next.init({
+        resources: {
+            ...i18next.options.resources,
+            en: {
+                translation: {
+                    ...i18next.options.resources?.en?.translation,
+                    ...additionalTranslations.en.translation
+                }
+            },
+            ar: {
+                translation: {
+                    ...i18next.options.resources?.ar?.translation,
+                    ...additionalTranslations.ar.translation
+                }
+            },
+            zh: {
+                translation: {
+                    ...i18next.options.resources?.zh?.translation,
+                    ...additionalTranslations.zh.translation
+                }
+            }
+        }
+    });
+    </script>
+    <div style="margin-left: 15%; width: 70%; height: 466px; padding: 80px 20px; background: url('img/блок_путешествие_в_формате_игры_фон.png') center/cover;">
+    <div class="putivv" style="display: grid; grid-template-columns: 1fr 1fr; margin-top: -50px;">
+        <div style="grid-column: 1;">
+            <h2 style="width: 70%; font-size: 40px; text-align: center; margin-bottom: 50px;" 
+                data-i18n="game_section.title">Путешествие в формате игры</h2>
+            <a th:href="@{/login}"
+               style="display: inline-block; background: #FC7C5D; color: black; padding: 15px 40px; border-radius: 20px; border: none; font-size: 20px; margin-top: 200px; margin-left: 25px; text-decoration: none; cursor: pointer;"
+               data-i18n="game_section.button">
+                Хочу присоединиться!
+            </a>
+        </div>
+        
+        <div style="max-width: 800px; text-align: center; grid-column: 2; display: grid; grid-template-rows: 1fr 1fr; gap: 90px">
+            <div style="grid-row: 1; margin-left: -70px; width: 100%;">
+                <img src="img/xnjfn.png" style="width: 50px; margin-top: 20px;">
+                <p style="font-size: 30px;" data-i18n="game_section.feature1">
+                    Выполняйте квесты и получайте вознаграждение в виде коинов
+                </p>
+            </div>
+            
+            <div style="grid-row: 2; margin-left: -130px;">
+                <img src="img/xnjfn.png" style="width: 50px; margin-top: 20px;">
+                <p style="font-size: 30px;" data-i18n="game_section.feature2">
+                    Посещайте интересные места и достопримечательности
+                </p>
+            </div>
         </div>
     </div>
-    <div class = "glav_text">
-        <h1 class = "g_t">туризм краснодарского края</h1>
     </div>
-    <div class = "opisanie">
-        <p  class = "opisanie_text"> тут будет всякая пп по типу краснодарский красй такой то такой то и такой то переходите на направления или на популярные достопримечательности</p>
-    </div>
-    <div class = "navigate">
-        <h1 style="text-align: center; font-size: 70px;">навигация</h1>
-    </div>
-    <div class = "nav_4_sh">
-        <a th:href="@{/history}" class ="nav_1">  <!-- заменяем onclick на th:href -->
-            <img src = "img/hidtory.jpg">
-            <h6>исторический</h6>
-            <p>описание исторического</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/sea}" class = "nav_2"> <!-- заменяем onclick на th:href -->
-            <img src = "img/moreee.jpg">
-            <h6>рекреационный</h6>
-            <p>описание рекреационного</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/sport}" class = "nav_3"> <!-- заменяем onclick на th:href -->
-            <img src = "img/more.jpg">
-            <h6>спорт</h6>
-            <p>описание спортивного</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/nature}" class = "nav_4"> <!-- заменяем onclick на th:href -->
-            <img src = "img/nature.jpeg">
-            <h6>природа</h6>
-            <p>описание природы</p>
-            <button>перейти</button>
-        </a>
-    </div>
-    <div class = "popularuty_sob">
-        <h1 style="text-align: center; font-size: 70px;"> популярные работы</h1>
-    </div>
-    <div class = "popul_scroll">
-        <a th:href="@{/sochi}" class ="pop_1"> <!-- заменяем onclick на th:href -->
-            <img src = "img/sochi.webp">
-            <h6>сочи</h6>
-            <p>описание олипийского дворика</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/park}" class = "pop_2"> <!-- заменяем onclick на th:href -->
-            <img src = "img/park.jpg">
-            <h6>парк галицкий</h6>
-            <p>описание галицкого</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/gelen}" class = "pop_3"> <!-- заменяем onclick на th:href -->
-            <img src = "img/gelen.jpg">
-            <h6>геленжик</h6>
-            <p>описание геленжика</p>
-            <button>перейти</button>
-        </a>
+    
+    <script>
+    // Добавьте эти переводы в ваш объект resources в i18next.init()
+    const gameSectionTranslations = {
+        en: {
+            translation: {
+                "game_section.title": "Travel in game format",
+                "game_section.button": "I want to join!",
+                "game_section.feature1": "Complete quests and earn coin rewards",
+                "game_section.feature2": "Visit interesting places and attractions"
+            }
+        },
+        ar: {
+            translation: {
+                "game_section.title": "السفر في شكل لعبة",
+                "game_section.button": "أريد الانضمام!",
+                "game_section.feature1": "أكمل المهام واكسب مكافآت العملات",
+                "game_section.feature2": "قم بزيارة الأماكن والمعالم السياحية المثيرة للاهتمام"
+            }
+        },
+        zh: {
+            translation: {
+                "game_section.title": "游戏化旅行",
+                "game_section.button": "我要加入!",
+                "game_section.feature1": "完成任务并获得代币奖励",
+                "game_section.feature2": "参观有趣的地方和景点"
+            }
+        }
+    };
+    
+    // Объедините с существующими переводами
+    i18next.init({
+        resources: {
+            ...i18next.options.resources,
+            en: {
+                translation: {
+                    ...i18next.options.resources?.en?.translation,
+                    ...gameSectionTranslations.en.translation
+                }
+            },
+            ar: {
+                translation: {
+                    ...i18next.options.resources?.ar?.translation,
+                    ...gameSectionTranslations.ar.translation
+                }
+            },
+            zh: {
+                translation: {
+                    ...i18next.options.resources?.zh?.translation,
+                    ...gameSectionTranslations.zh.translation
+                }
+            }
+        }
+    });
+    </script>
+    <div class="carta">
+        <!-- Сочи -->
+        <div th:onclick="'window.location.href=\'' + @{/sochi} + '\''"
+             style="cursor: pointer; left: 660px; top:820px; position: relative;">
+            <img src="img/metks.png" style="width: 50px; height: 50px;" class="img_city">
+        </div>
 
-    </div>
-    <div class = "popularuty_sob">
-        <h1 style="text-align: center; font-size: 70px;"> города</h1>
-    </div>
-    <div class = "popul_scroll">
-        <a th:href="@{/sochi}" class ="pop_1"> <!-- заменяем onclick на th:href -->
-            <img src = "img/sochi.webp">
-            <h6>сочи</h6>
-            <p>описание олипийского дворика</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/anapa}" class = "pop_2"> <!-- заменяем onclick на th:href -->
-            <img src = "img/park.jpg">
-            <h6>парк галицкий</h6>
-            <p>описание галицкого</p>
-            <button>перейти</button>
-        </a>
-        <a th:href="@{/gelen}" class = "pop_3"> <!-- заменяем onclick на th:href -->
-            <img src = "img/gelen.jpg">
-            <h6>геленжик</h6>
-            <p>описание геленжика</p>
-            <button>перейти</button>
-        </a>
+        <!-- Геленджик -->
+        <div th:onclick="'window.location.href=\'' + @{/gelemd} + '\''"
+             style="cursor: pointer; left: 380px; top:530px; position: relative;">
+            <img src="img/metks.png" style="width: 50px; height: 50px;" class="img_city">
+        </div>
 
+        <!-- Анапа -->
+        <div th:onclick="'window.location.href=\'' + @{/anapa} + '\''"
+             style="cursor: pointer; left: 250px; top:400px; position: relative;">
+            <img src="img/metks.png" style="width: 50px; height: 50px;" class="img_city">
+        </div>
     </div>
-
+    
+    <div class="contact" id = "con">
+        <footer style="background: #1A1C13; color: white; padding: 50px 20px;">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
+                <div>
+                    <div style="color: #FC7C5D; font-size: 40px; font-family: Roboto; font-style: italic; font-weight: 700; margin-bottom: 30px;">
+                        KrayGo
+                    </div>
+                    <nav style="display: flex; flex-direction: column; gap: 15px;">
+                        <a href="#" style="color: white; text-decoration: none;" data-i18n="footer.home">Главная</a>
+                        <a href="#" style="color: white; text-decoration: none;" data-i18n="footer.account">Личный кабинет</a>
+                        <a href="#" style="color: white; text-decoration: none;" data-i18n="footer.faq">FAQ</a>
+                        <a href="#" style="color: white; text-decoration: none;" data-i18n="footer.about">О нас</a>
+                    </nav>
+                </div>
+                
+                <div style="text-align: right;">
+                    <div style="margin-bottom: 20px;" data-i18n="footer.language">RU/ENG</div>
+                    <a href="#" style="color: white; text-decoration: underline;" data-i18n="footer.cooperation">Кнопка для сотрудничества</a>
+                </div>
+            </div>
+        </footer>
     </div>
-    <div class = "contact">
-
-    </div>
+    
+    <script>
+    // Добавьте эти переводы в ваш объект resources в i18next.init()
+    const footerTranslations = {
+        en: {
+            translation: {
+                "map.title": "Cities Map",
+                "footer.home": "Home",
+                "footer.account": "Account",
+                "footer.faq": "FAQ",
+                "footer.about": "About Us",
+                "footer.language": "EN/RU",
+                "footer.cooperation": "Partnership"
+            }
+        },
+        ar: {
+            translation: {
+                "map.title": "خريطة المدن",
+                "footer.home": "الصفحة الرئيسية",
+                "footer.account": "الحساب الشخصي",
+                "footer.faq": "الأسئلة الشائعة",
+                "footer.about": "معلومات عنا",
+                "footer.language": "AR/EN",
+                "footer.cooperation": "تعاون"
+            }
+        },
+        zh: {
+            translation: {
+                "map.title": "城市地图",
+                "footer.home": "主页",
+                "footer.account": "个人账户",
+                "footer.faq": "常见问题",
+                "footer.about": "关于我们",
+                "footer.language": "中/英",
+                "footer.cooperation": "合作"
+            }
+        }
+    };
+    
+    // Объедините с существующими переводами
+    i18next.init({
+        resources: {
+            ...i18next.options.resources,
+            en: {
+                translation: {
+                    ...i18next.options.resources?.en?.translation,
+                    ...footerTranslations.en.translation
+                }
+            },
+            ar: {
+                translation: {
+                    ...i18next.options.resources?.ar?.translation,
+                    ...footerTranslations.ar.translation
+                }
+            },
+            zh: {
+                translation: {
+                    ...i18next.options.resources?.zh?.translation,
+                    ...footerTranslations.zh.translation
+                }
+            }
+        }
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script th:src="@{/js/index.js}"></script>
 </body>
 </html>
